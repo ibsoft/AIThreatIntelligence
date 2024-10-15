@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Search for IOC{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="mb-4" style="max-width: 200px;"> <!-- Adjust logo size as needed -->
+    <h1 class="display-8">Search for Indicator of Compromise (IOC)</h1>
+    <p class="lead">Enter an IOC to search in the MISP database.</p>
+
+    <form id="search-form" action="/search" method="POST" class="form-inline justify-content-center" onsubmit="showSpinner()">
+        <div class="input-group mb-3" style="max-width: 800px; width: 100%;"> <!-- Set max-width and full width -->
+            <input type="text" name="ioc" class="form-control search-box" placeholder="Enter IOC (e.g., domain, IP, hash)" required>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Spinner -->
+    <div id="spinner-container" class="text-center" style="display:none; margin-top: 20px;">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .search-box {
+        border-radius: 25px; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        padding: 10px; /* Adds padding for better spacing */
+    }
+    .input-group {
+        width: 100%; /* Takes full width available */
+    }
+</style>
+
+<script>
+    function showSpinner() {
+        document.getElementById('spinner-container').style.display = 'block';  // Show the spinner
+    }
+</script>
+
+{% endblock %}

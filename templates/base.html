@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Threat Intelligence - MISP IOCs{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            height: 100vh; /* Full height */
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Stack children vertically */
+            margin: 0; /* Remove default margin */
+        }
+        .main-content {
+            flex: 1; /* Allow the main content to grow and fill available space */
+            display: flex; /* Enable flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            padding: 20px; /* Optional padding */
+        }
+        .fancy-table th, .fancy-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: center;
+        }
+        .fancy-table th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .fancy-table tr:hover {
+            background-color: #f1f3f5;
+        }
+        .search-box {
+            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #343a40; /* Dark background */
+            color: white; /* Text color */
+            text-align: center; /* Center text */
+            width: 100%; /* Full width */
+            position: relative; /* Positioning */
+            bottom: 0; /* Align to the bottom */
+            left: 0; /* Align to the left */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/">Threat Intelligence</a>
+    </nav>
+
+    <div class="container main-content top-margin:100">
+        <div class="text-center">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span>© {{ current_year }} Threat Intelligence.</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

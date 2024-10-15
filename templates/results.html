@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="margin-top: 70px;"> <!-- Added margin-top to create space below navbar -->
+    <h1 class="display-4 text-left font-weight-bold">Search Results</h1>
+    <p class="lead text-left font-weight-bold">Results for IOC: <strong>{{ ioc }}</strong></p>
+
+    <div id="results-container"> <!-- Ensure results container is visible -->
+        {% if results %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong class="text-primary">Search Results</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover fancy-table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-left">Event ID</th>
+                            <th class="text-left">Event Info</th>
+                            <th class="text-left">Date Added</th>
+                            <th class="text-left">Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                        <tr>
+                            <td class="text-left font-weight-bold">{{ result['Event']['id'] }}</td>
+                            <td class="text-left">{{ result['Event']['info'] }}</td>
+                            <td class="text-left">{{ result['Event']['date'] }}</td>
+                            <td class="text-left">
+                                {% for tag in result['Event']['Tag'] %}
+                                    <span class="badge badge-primary">{{ tag['name'] }}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong class="text-primary">Generated Report</strong>
+            </div>
+            <div class="card-body">
+                <pre class="mb-0" style="white-space: pre-wrap; text-align: left;">{{ report }}</pre>
+            </div>
+        </div>
+
+        {% else %}
+        <p>No results found for the IOC <strong>{{ ioc }}</strong>.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="/" class="btn btn-secondary">Search Again</a>
+</div>
+<br>
+{% endblock %}
